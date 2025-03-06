@@ -1,35 +1,58 @@
 <template>
+  <!-- Header siempre visible -->
+  <header>
+    <h1>Citas Médicas Madrid</h1>
+    <div class="nav-links">
+      <!-- Mostrar botón "Cerrar sesión" si el usuario está autenticado y no en las rutas de login o registro -->
+      <button v-if="showLogoutButton" @click="logout" class="header-button">
+        Cerrar sesión
+      </button>
+      <!-- Mostrar botón "Iniciar sesión" solo si no está en /login, /register, /privacy-policy, /terms o /contact -->
+      <RouterLink v-else-if="showLoginButton" to="/login" class="header-link">
+        Iniciar Sesión
+      </RouterLink>
+    </div>
+  </header>
 
-<Splide :options="options" aria-label="Background Carousel">
+  <!-- Contenedor con fondo dinámico (si no es la inicial se pone el fondo en blanco) -->
+  <div :class="{ 'splide-background': isDefaultRoute, 'white-background': !isDefaultRoute }">
+    <!-- Carrusel de imágenes si está en la página de inicio -->
+    <Splide v-if="isDefaultRoute" :options="options" aria-label="Background Carousel">
       <SplideSlide>
         <img src="https://atencionprimaria.almirallmed.es/wp-content/uploads/sites/12/2020/07/imagenesblog_varios_5-min.jpg" alt="Background 1" />
       </SplideSlide>
       <SplideSlide>
         <img src="https://atencionprimaria.almirallmed.es/wp-content/uploads/sites/12/2020/07/imagenesblog_varios_5-min.jpg" alt="Background 2" />
       </SplideSlide>
-      <SplideSlide>
-        <img src="https://atencionprimaria.almirallmed.es/wp-content/uploads/sites/12/2020/07/imagenesblog_varios_5-min.jpg" alt="Background 3" />
-      </SplideSlide>
-      <SplideSlide>
-        <img src="https://atencionprimaria.almirallmed.es/wp-content/uploads/sites/12/2020/07/imagenesblog_varios_5-min.jpg" alt="Background 4" />
-      </SplideSlide>
     </Splide>
 
-  <header>
-    <h1>Citas Médicas Madrid</h1>
-    <div class="nav-links">
-      <RouterLink to="/login" class="header-link">Iniciar Sesión</RouterLink>
+    <!-- Cargar contenido de las demás rutas dentro del RouterView -->
+    <div v-else>
+      <RouterView />
     </div>
-  </header>
+  </div>
 
-
-  <RouterView />
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2024 Citas Médicas Madrid. Todos los derechos reservados.</p>
+      <nav>
+        <RouterLink to="/privacy-policy">Política de Privacidad</RouterLink>
+        <RouterLink to="/terms">Términos y Condiciones</RouterLink>
+        <RouterLink to="/contact">Contacto</RouterLink>
+      </nav>
+    </div>
+  </footer>
 </template>
 
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router';
+import { computed } from 'vue';
 import { Splide, SplideSlide } from '@splidejs/vue-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
+
+const route = useRoute();
+const router = useRouter();
 
 const options = {
   type: 'fade',
@@ -40,9 +63,28 @@ const options = {
   pagination: false,
 };
 
+// Determinar si estamos en una ruta con el carrusel (inicio)
+const isDefaultRoute = computed(() => {
+  return ['/', '/home'].includes(route.path);
+});
+
+// Mostrar botón "Iniciar Sesión" solo si no está en /login, /register, /privacy-policy, /terms o /contact
+const showLoginButton = computed(() => {
+  return !['/login', '/register', '/privacy-policy', '/terms', '/contact'].includes(route.path);
+});
+
+// Mostrar "Cerrar sesión" en cualquier ruta distinta de '/', '/login', '/register', '/privacy-policy', '/terms y /contact'
+const showLogoutButton = computed(() => {
+  return !['/', '/login', '/register', '/privacy-policy', '/terms', '/contact'].includes(route.path);
+});
+
+// Función para cerrar sesión y redirigir al inicio
+const logout = () => {
+  router.push('/');
+};
 </script>
 
-<style >
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
 @import "assets/styles.scss";
 </style>
