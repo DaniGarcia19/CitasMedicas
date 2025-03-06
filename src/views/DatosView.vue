@@ -6,9 +6,9 @@
         <p><strong>Nombre:</strong> {{ userData.name }}</p>
         <p><strong>Correo electrónico:</strong> {{ userData.email }}</p>
         <p><strong>Teléfono:</strong> {{ userData.phone }}</p>
-        <p><strong>Dirección:</strong> {{ userData.address }}</p>
-        <p><strong>Fecha de nacimiento:</strong> {{ userData.birthdate }}</p>
+        <p><strong>Fecha de nacimiento:</strong> {{ userData.date }}</p>
         <!-- Puedes agregar más campos según la información disponible -->
+        <RouterLink to="/principal"><BotonGoBack /></RouterLink>
       </div>
   
       <div v-else>
@@ -20,6 +20,7 @@
   <script setup>
   import { ref, onMounted } from "vue";
   import apiservices from "@/apiservices";
+  import BotonGoBack from "@/components/BotonBack.vue";
   
   const userData = ref(null); // Almacenará los datos del usuario
   
@@ -27,6 +28,7 @@
   const fetchUserProfile = async () => {
     try {
       userData.value = await apiservices.getProfile();
+      console.log('Datos del perfil:', userData.value); 
     } catch (error) {
       console.error("Error al obtener los datos del perfil:", error);
     }

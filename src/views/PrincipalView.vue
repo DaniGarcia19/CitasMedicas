@@ -96,11 +96,11 @@
   
   // Función de redirección
   const viewData = () => {
-    router.push("/datos"); // Redirige a la nueva vista de datos
+    router.push("/datos");
   };
   
   const consultCenters = () => {
-    console.log("Consultando centros médicos...");
+    router.push("/centros")
   };
   
   const manageAppointments = () => {

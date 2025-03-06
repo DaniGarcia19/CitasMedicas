@@ -6,49 +6,52 @@
     padding: 0;
     font-family: 'Kanit', sans-serif;
     padding: 20px;
-    }
-    
-    .user-info {
+}
+
+.user-info {
     text-align: center;
     margin-bottom: 20px;
-    }
-    
-    .carousel {
+}
+
+.carousel {
     margin-bottom: 40px;
-    }
-    
-    .cards-container {
+}
+
+.cards-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    }
-    
-    .card-row {
+}
+
+.card-row {
     display: flex;
     gap: 20px;
-    }
-    
-    .card {
+}
+
+.card {
     flex: 1;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    }
-    
-    .card h3 {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén apilados verticalmente */
+    justify-content: space-between; /* Alinea el contenido correctamente */
+}
+
+.card h3 {
     font-size: 1.25rem;
     color: #2563eb;
-    }
-    
-    .card p {
+}
+
+.card p {
     font-size: 1rem;
     color: #555;
     margin: 10px 0;
-    }
-    
-    .card button {
+}
+
+.card button {
     background-color: #2563eb;
     color: white;
     padding: 10px;
@@ -56,27 +59,28 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    }
-    
-    .card button:hover {
+    align-self: center; /* Asegura que el botón esté centrado */
+}
+
+.card button:hover {
     background-color: #1e4bb8;
-    }
-    
-    .additional-buttons {
+}
+
+.additional-buttons {
     display: flex;
     gap: 20px;
     justify-content: center;
-    }
-    
-    .additional-buttons button {
+}
+
+.additional-buttons button {
     background-color: #2563eb;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    }
-    
-    .additional-buttons button:hover {
+}
+
+.additional-buttons button:hover {
     background-color: #1e4bb8;
-    }
+}

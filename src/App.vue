@@ -1,6 +1,7 @@
 <template>
   <!-- Header siempre visible -->
   <header>
+    <img src="https://ginesmad.com/wp-content/uploads/2016/02/Salud-Madrid.png" alt="Logo" class="header-logo" />
     <h1>Citas Médicas Madrid</h1>
     <div class="nav-links">
       <!-- Mostrar botón "Cerrar sesión" si el usuario está autenticado y no en las rutas de login o registro -->
@@ -19,10 +20,10 @@
     <!-- Carrusel de imágenes si está en la página de inicio -->
     <Splide v-if="isDefaultRoute" :options="options" aria-label="Background Carousel">
       <SplideSlide>
-        <img src="https://atencionprimaria.almirallmed.es/wp-content/uploads/sites/12/2020/07/imagenesblog_varios_5-min.jpg" alt="Background 1" />
+        <img src="https://www.comunidad.madrid/sites/default/files/styles/block_teaser_image/public/tarjeta_sanitaria.jpeg?itok=kSS1uuye" alt="Background 1" />
       </SplideSlide>
       <SplideSlide>
-        <img src="https://atencionprimaria.almirallmed.es/wp-content/uploads/sites/12/2020/07/imagenesblog_varios_5-min.jpg" alt="Background 2" />
+        <img src="https://s1.elespanol.com/2024/02/16/actualidad/833176842_240010149_1706x960.jpg" alt="Background 2" />
       </SplideSlide>
     </Splide>
 
