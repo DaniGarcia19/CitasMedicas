@@ -5,6 +5,7 @@ import PrincipalView from '@/views/PrincipalView.vue';
 import Centers from '@/views/CentroMedicosView.vue';
 import DatosView from '@/views/DatosView.vue';
 import Privacy from '@/views/PrivacidadView.vue';
+import EditDatos from '@/views/EditDatosView.vue';
 
 const routes = [
   { path: '/login', name: 'login', component: LoginComponent },
@@ -14,7 +15,8 @@ const routes = [
   { path: '/centros', name: 'Centros', component: Centers},
   { path: '/privacy-policy', name: 'privacidad', component: Privacy},
   { path: '/terms', name: 'términos', component: Privacy},
-  { path: '/contact', name: 'contacto', component: Privacy}
+  { path: '/contact', name: 'contacto', component: Privacy},
+  { path: '/EditDatos', name: 'EditDatos', component: EditDatos}
 ];
 
 const router = createRouter({

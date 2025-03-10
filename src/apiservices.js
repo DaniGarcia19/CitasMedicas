@@ -1,6 +1,12 @@
 export default {
   BASE_URL: "http://127.0.0.1:5000",
-  token: "",
+  get token() {
+    return localStorage.getItem("auth_token");
+  },
+
+  set token(value) {
+    localStorage.setItem("auth_token", value);
+  },
 
   async login(usuario, pass) {
     let response = await fetch(this.BASE_URL + "/login", {
@@ -50,6 +56,24 @@ export default {
 
     const profileData = await response.json();
     return profileData;
+  },
+
+  async updateProfile(userData) {
+    let response = await fetch(this.BASE_URL + "/currentUser", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`,
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error("No se pudo actualizar el perfil");
+    }
+
+    const updatedProfile = await response.json();
+    return updatedProfile;
   },
 
   async getCenters() {

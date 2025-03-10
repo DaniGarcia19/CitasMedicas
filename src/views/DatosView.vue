@@ -1,28 +1,39 @@
 <template>
-    <div class="datos-view">
+  <div class="datos-view">
+    <div class="header-container">
       <h2>Mis Datos</h2>
-  
-      <div v-if="userData">
-        <p><strong>Nombre:</strong> {{ userData.name }}</p>
-        <p><strong>Correo electrónico:</strong> {{ userData.email }}</p>
-        <p><strong>Teléfono:</strong> {{ userData.phone }}</p>
-        <p><strong>Fecha de nacimiento:</strong> {{ userData.date }}</p>
-        <!-- Puedes agregar más campos según la información disponible -->
-        <RouterLink to="/principal"><BotonGoBack /></RouterLink>
-      </div>
-  
-      <div v-else>
-        <p>Cargando tus datos...</p>
-      </div>
+      <!-- Botón de editar a la derecha del título -->
+      <RouterLink to="/EditDatos"><BotonEdit class="edit-button" /></RouterLink>
     </div>
-  </template>
+
+    <div v-if="userData">
+      <p><strong>Nombre:</strong> {{ userData.name }}</p>
+      <p><strong>Correo electrónico:</strong> {{ userData.email }}</p>
+      <p><strong>Teléfono:</strong> {{ userData.phone }}</p>
+      <p><strong>Fecha de nacimiento:</strong> {{ userData.date }}</p>
+    </div>
+
+    <div v-else>
+      <p>Cargando tus datos...</p>
+    </div>
+
+    <!-- Botón de volver al final de la vista -->
+    <div class="back-button-container">
+      <RouterLink to="/principal"><BotonGoBack class="go-back-button" /></RouterLink>
+    </div>
+  </div>
+</template>
+
+
+
   
   <script setup>
   import { ref, onMounted } from "vue";
   import apiservices from "@/apiservices";
   import BotonGoBack from "@/components/BotonBack.vue";
+  import BotonEdit from "@/components/BotonEdit.vue";
   
-  const userData = ref(null); // Almacenará los datos del usuario
+  const userData = ref(null);
   
   // Cargar los datos del perfil
   const fetchUserProfile = async () => {

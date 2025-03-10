@@ -1,0 +1,68 @@
+    .edit-profile {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+    }
+
+    .form-group {
+    margin-bottom: 15px;
+    }
+
+    label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    }
+
+    .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    }
+
+    .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    }
+
+    button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+
+    button[type="button"] {
+    background-color: #f44336;
+    }
+
+    button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    }
