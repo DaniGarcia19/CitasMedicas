@@ -83,7 +83,7 @@
   const fetchUserProfile = async () => {
     try {
       const profileData = await apiservices.getProfile();
-      user.value = profileData; // Asignamos el perfil obtenido al objeto user
+      user.value = profileData;
     } catch (error) {
       console.error("Error al obtener el perfil del usuario:", error);
     }
@@ -104,7 +104,7 @@
   };
   
   const manageAppointments = () => {
-    console.log("Gestionando citas médicas...");
+    router.push("/citas")
   };
   
   const consultDiseases = () => {
