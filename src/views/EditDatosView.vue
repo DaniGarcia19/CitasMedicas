@@ -38,7 +38,7 @@
     required
     />
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
     <label for="date">Fecha de nacimiento:</label>
     <input
     type="date"
@@ -46,7 +46,7 @@
     v-model="editForm.date"
     required
     />
-</div>
+</div> -->
 <div class="form-buttons">
     <button type="submit">Guardar cambios</button>
     <button type="button" @click="cancelEdit">Cancelar</button>
@@ -78,7 +78,6 @@ editForm.value = {
     lastname: profile.lastname,
     email: profile.email,
     phone: profile.phone,
-    date: profile.date
 }; 
 } catch (error) {
 console.error("Error al obtener los datos del perfil:", error);

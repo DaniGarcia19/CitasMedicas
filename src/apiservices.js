@@ -60,6 +60,7 @@ export default {
   },
 
   async updateProfile(userData) {
+    console.log(JSON.stringify(userData));
     let response = await fetch(this.BASE_URL + "/currentUser", {
       method: "PATCH",
       headers: {
