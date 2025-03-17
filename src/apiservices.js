@@ -9,6 +9,8 @@ export default {
     localStorage.setItem("auth_token", value);
   },
 
+  // Métodos de autenticación y perfil
+
   async login(usuario, pass) {
     let response = await fetch(this.BASE_URL + "/login", {
       method: "POST",
@@ -97,10 +99,23 @@ export default {
 
   // Nuevas funcionalidades añadidas para gestionar citas
 
-  async getCitas() {
-    let response = await fetch(`${this.BASE_URL}/date/getByUser`, {
+  async getAllCitas() {
+    let response = await fetch(`${this.BASE_URL}/dates`, {
       method: "GET",
       headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.token}`,
+      },
+    });
+
+    if (!response.ok) throw new Error("Error al obtener las citas");
+    return await response.json();
+  },
+
+  async getCitasByName() {
+    let response = await fetch(`${this.BASE_URL}/date/getByUser`, {
+      method: "GET",
+      headers: {   
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`,
       },

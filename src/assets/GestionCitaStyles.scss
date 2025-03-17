@@ -1,6 +1,6 @@
 .citas-container {
     max-width: 900px;
-    margin: 50px auto 30px auto; /* Añadir margen superior y inferior */
+    margin: 50px auto 30px auto;
     padding: 30px;
     background: #f9f9f9;
     border-radius: 12px;
@@ -10,9 +10,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    height: auto; /* Ajusta la altura de acuerdo al contenido */
-    overflow-y: auto; /* Añadir scroll si el contenido es muy largo */
-    flex-grow: 1; /* Permite que este contenedor ocupe el espacio restante */
+    height: auto;
+    overflow-y: auto;
+    flex-grow: 1;
 }
 
 h1 {
@@ -26,13 +26,13 @@ h1 {
     justify-content: space-between;
     gap: 25px;
     margin-bottom: 30px;
-    flex-wrap: wrap; /* Permite que los elementos se ajusten en pantallas más pequeñas */
+    flex-wrap: wrap;
 }
 
 .crear-cita,
 .cancelar-cita {
     flex: 1;
-    min-width: 300px; /* Asegura que los elementos no se colapsen demasiado en pantallas pequeñas */
+    min-width: 300px;
     padding: 20px;
     background: white;
     border-radius: 8px;
@@ -80,9 +80,9 @@ button:hover {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    flex: 1; /* Permite que esta sección ocupe el espacio restante */
-    overflow-y: auto; /* Permite scroll si hay muchas citas */
-    max-height: 50vh; /* Ajusta el tamaño máximo visible para la sección de citas */
+    flex: 1;
+    overflow-y: auto;
+    max-height: 50vh;
 }
 
 table {
@@ -124,4 +124,21 @@ tr:hover {
 
 .delete-btn:focus {
     outline: none;
+}
+
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select, input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }

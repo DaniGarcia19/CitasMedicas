@@ -84,12 +84,14 @@ h1 {
 
 .white-background {
   background-color: #ffffff;
-  flex-grow: 1; /* Permite que este contenedor ocupe el espacio restante */
+  flex-grow: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: auto; /* Permite el scroll si el contenido se desborda */
+  overflow-y: auto;
+  min-height: calc(100vh - 21vh); /* Resta el espacio del header y footer */
+  padding-bottom: 10vh; /* Espacio extra para evitar que el contenido quede oculto */
 }
 
 .splide {
@@ -133,8 +135,11 @@ footer {
   text-align: center;
   padding: 1rem;
   width: 100%;
-  position: relative;  /* Cambié a relative para que se quede al final del contenido */
-  margin-top: auto; /* Asegura que el footer se mueva al final del contenido */
+  position: fixed; /* Fijar el footer en la parte inferior */
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  height: 15vh; /* Ajustado para que se vea mejor */
 }
 
 .footer-content {
