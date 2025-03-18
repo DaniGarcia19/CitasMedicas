@@ -6,11 +6,12 @@
       <RouterLink to="/EditDatos"><BotonEdit class="edit-button" /></RouterLink>
     </div>
 
-    <div v-if="userData">
-      <p><strong>Nombre:</strong> {{ userData.name }}</p>
-      <p><strong>Correo electrónico:</strong> {{ userData.email }}</p>
-      <p><strong>Teléfono:</strong> {{ userData.phone }}</p>
-      <p><strong>Fecha de nacimiento:</strong> {{ userData.date }}</p>
+    <div v-if="userData" class="data-box">
+      <!-- Icono al lado del título de cada dato -->
+      <p><span class="icon">👤</span><strong>Nombre:</strong> {{ userData.name }}</p>
+      <p><span class="icon">📧</span><strong>Correo electrónico:</strong> {{ userData.email }}</p>
+      <p><span class="icon">📞</span><strong>Teléfono:</strong> {{ userData.phone }}</p>
+      <p><span class="icon">🎂</span><strong>Fecha de nacimiento:</strong> {{ userData.date }}</p>
     </div>
 
     <div v-else>
@@ -24,46 +25,26 @@
   </div>
 </template>
 
+<script setup>
+import { ref, onMounted } from "vue";
+import apiservices from "@/apiservices";
+import BotonGoBack from "@/components/BotonBack2.vue";
+import BotonEdit from "@/components/BotonEdit.vue";
 
+const userData = ref(null);
 
-  
-  <script setup>
-  import { ref, onMounted } from "vue";
-  import apiservices from "@/apiservices";
-  import BotonGoBack from "@/components/BotonBack.vue";
-  import BotonEdit from "@/components/BotonEdit.vue";
-  
-  const userData = ref(null);
-  
-  // Cargar los datos del perfil
-  const fetchUserProfile = async () => {
-    try {
-      userData.value = await apiservices.getProfile();
-      console.log('Datos del perfil:', userData.value); 
-    } catch (error) {
-      console.error("Error al obtener los datos del perfil:", error);
-    }
-  };
-  
-  // Cargar los datos cuando el componente se monte
-  onMounted(() => {
-    fetchUserProfile();
-  });
-  </script>
-  
-  <style scoped>
-  .datos-view {
-    padding: 20px;
+// Cargar los datos del perfil
+const fetchUserProfile = async () => {
+  try {
+    userData.value = await apiservices.getProfile();
+    console.log('Datos del perfil:', userData.value); 
+  } catch (error) {
+    console.error("Error al obtener los datos del perfil:", error);
   }
-  
-  .datos-view h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .datos-view p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  </style>
-  
+};
+
+// Cargar los datos cuando el componente se monte
+onMounted(() => {
+  fetchUserProfile();
+});
+</script>

@@ -24,7 +24,7 @@
 import { ref, onMounted } from "vue";
 import apiservices from "@/apiservices";
 import Boton1 from "@/components/Boton1.vue";
-import BotonGoBack from "@/components/BotonBack.vue";
+import BotonGoBack from "@/components/BotonBack2.vue";
 
 const centers = ref([]);
 

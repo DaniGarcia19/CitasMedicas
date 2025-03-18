@@ -97,7 +97,6 @@ export default {
     return centersData;
   },
 
-  // Nuevas funcionalidades añadidas para gestionar citas
 
   async getAllCitas() {
     let response = await fetch(`${this.BASE_URL}/dates`, {
@@ -132,7 +131,7 @@ export default {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${this.token}`,
       },
-      body: JSON.stringify({ day: fecha }), // Cambié 'fecha' a 'day' para que coincida con el parámetro de la API
+      body: JSON.stringify({ day: fecha }),
     });
 
     if (!response.ok) throw new Error("Error al obtener citas por día");
@@ -147,7 +146,7 @@ export default {
         "Authorization": `Bearer ${this.token}`,
       },
       body: JSON.stringify({
-        center: data.center,  // Cambié 'data' para que coincida con los parámetros de la API
+        center: data.center, 
         date: data.date,
       }),
     });
@@ -158,18 +157,22 @@ export default {
 
   async cancelarCita(data) {
     let response = await fetch(`${this.BASE_URL}/date/delete`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${this.token}`,
-      },
-      body: JSON.stringify({
-        center: data.center,  // Cambié 'data' para que coincida con los parámetros de la API
-        date: data.date,
-      }),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${this.token}`,
+        },
+        body: JSON.stringify({
+            center: data.center,
+            date: data.date,
+        }),
     });
 
-    if (!response.ok) throw new Error("Error al cancelar la cita");
-    return await response.json();
-  },
+    let responseData = await response.json(); // Obtener el JSON de la respuesta
+    if (!response.ok) {
+        throw new Error(responseData.message || "Error al cancelar la cita");
+    }
+
+    return { status: response.status, data: responseData }; // Devuelve el código de estado junto con los datos
+}
 };
